@@ -1,11 +1,11 @@
-export enum LocalStorageKey {
-  DARK_THEME = 'dark-theme',
+export enum StorageKey {
+  USER_DATA = 'user-data',
 }
 
-export type TLocalStorageKey = `v${number}-${string}-${LocalStorageKey}`;
+export type TStorageKey = `v${number}-${string}-${StorageKey}`;
 
-export const LOCAL_STORAGE_VERSION = 'v1';
+export const STORAGE_VERSION = 'v1';
 
-export const LOCAL_STORAGE_KEYS: Record<LocalStorageKey, TLocalStorageKey> = {
-  [LocalStorageKey.DARK_THEME]: `${LOCAL_STORAGE_VERSION}-ipx-${LocalStorageKey.DARK_THEME}`,
+export const STORAGE_KEYS: Record<StorageKey, TStorageKey> = {
+  [StorageKey.USER_DATA]: `${STORAGE_VERSION}-sumedical-${StorageKey.USER_DATA}`,
 };

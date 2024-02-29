@@ -3,13 +3,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/dapp',
-        destination: '/dapp/swap',
-        permanent: true,
-      },
-      {
         source: '/',
-        destination: '/dapp/swap',
+        destination: '/dashboard',
         permanent: true,
       },
     ];
