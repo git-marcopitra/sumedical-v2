@@ -1,4 +1,4 @@
-import { Button, Form, Input, Label, Span } from '@stylin.js/elements';
+import { Button, Form, Input, Label, Span, U } from '@stylin.js/elements';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -30,7 +30,7 @@ const Recover: FC = () => {
             px={space.l}
             type="text"
             border="none"
-            borderRadius={radii.m}
+            borderRadius={radii.s}
             fontSize={fontSizes.l}
             boxShadow="0 1.4rem 1rem #0004"
             placeholder="email@exemplo.com.br"
@@ -42,7 +42,7 @@ const Recover: FC = () => {
           border="none"
           cursor="pointer"
           bg={colors.secondary}
-          borderRadius={radii.m}
+          borderRadius={radii.s}
           fontSize={fontSizes.l}
           color={colors.onPrimary}
           borderTop="1px solid white"
@@ -56,7 +56,10 @@ const Recover: FC = () => {
           Recuperar conta
         </Button>
         <Span textAlign="center">
-          Tem uma conta? <Link href="/login">Entrar</Link>
+          Já tem uma conta?{' '}
+          <Link href="/login">
+            <U>Clique aqui</U>
+          </Link>
         </Span>
       </Form>
     </AuthLayout>

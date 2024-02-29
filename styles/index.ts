@@ -17,6 +17,9 @@ export const GlobalStyles = css`
     overflow-x: hidden;
   }
 
+  a {
+    text-decoration: none;
+  }
   /* width */
   ::-webkit-scrollbar {
     width: 10px;

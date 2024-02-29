@@ -1,10 +1,11 @@
-import { Button, Div, Form, Input, Label, Span } from '@stylin.js/elements';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button, Div, Form, Input, Label, Span, U } from '@stylin.js/elements';
 import Link from 'next/link';
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { login } from '@/api/auth/login';
+import { hasLoginError, login } from '@/api/auth/login';
 import { AuthLayout } from '@/components';
 import { EyeSlashedSVG, EyeSVG } from '@/components/svg';
 import { useAuth } from '@/context/auth';
@@ -17,13 +18,16 @@ import { LoginForm } from './login.types';
 
 const Login: FC = () => {
   const { updateUser } = useAuth();
-  const { register, handleSubmit } = useForm<LoginForm>({
+  const { register, getValues } = useForm<LoginForm>({
     defaultValues: { email: '', password: '' },
   });
   const [isPasswordHidden, setHidePassword] = useState(true);
 
-  const handleLogin = async (email: string, password: string) => {
+  const handleLogin = async () => {
+    const { email, password } = getValues();
     const data = await login(email, password);
+
+    if (hasLoginError(data)) throw new Error(`${data.status}: ${data.message}`);
 
     updateUser({
       id: data.user.id,
@@ -34,11 +38,11 @@ const Login: FC = () => {
     });
   };
 
-  const onSubmit = async ({ email, password }: LoginForm) =>
-    toast.promise(handleLogin(email, password), {
+  const onSubmit = () =>
+    toast.promise(handleLogin(), {
       loading: 'Logando...',
       success: 'Login bem sucedido',
-      error: 'Alguma coisa correu mal!',
+      error: (error) => error.message ?? 'Alguma coisa correu mal!',
     });
 
   return (
@@ -49,7 +53,6 @@ const Login: FC = () => {
         gap={space.xl}
         maxWidth="25rem"
         flexDirection="column"
-        onSubmit={handleSubmit(onSubmit)}
       >
         <Label
           gap={space.s}
@@ -64,7 +67,7 @@ const Login: FC = () => {
             px={space.l}
             border="none"
             {...register('email')}
-            borderRadius={radii.m}
+            borderRadius={radii.s}
             fontSize={fontSizes.l}
             boxShadow="0 1.4rem 1rem #0004"
             placeholder="email@exemplo.com.br"
@@ -82,7 +85,7 @@ const Login: FC = () => {
             display="flex"
             overflow="hidden"
             alignItems="center"
-            borderRadius={radii.m}
+            borderRadius={radii.s}
             boxShadow="0 1.4rem 1rem #0004"
           >
             <Input
@@ -117,12 +120,14 @@ const Login: FC = () => {
           </Div>
         </Label>
         <Button
-          mt={space.l}
           p={space.s}
+          mt={space.l}
+          type="button"
           border="none"
           cursor="pointer"
+          onClick={onSubmit}
           bg={colors.secondary}
-          borderRadius={radii.m}
+          borderRadius={radii.s}
           fontSize={fontSizes.l}
           color={colors.onPrimary}
           borderTop="1px solid white"
@@ -136,7 +141,10 @@ const Login: FC = () => {
           Entrar
         </Button>
         <Span textAlign="center">
-          Esqueceu a senha? <Link href="/recover">Clique aqui</Link>
+          Esqueceu a senha?{' '}
+          <Link href="/recover">
+            <U>Clique aqui</U>
+          </Link>
         </Span>
       </Form>
     </AuthLayout>

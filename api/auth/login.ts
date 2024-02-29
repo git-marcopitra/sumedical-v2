@@ -1,3 +1,7 @@
+interface LoginError {
+  status: `${number}`;
+  message: string;
+}
 interface LoginResponse {
   user: {
     id: number;
@@ -12,10 +16,14 @@ interface LoginResponse {
   };
 }
 
+export const hasLoginError = (
+  arg: LoginResponse | LoginError
+): arg is LoginError => !!(arg as LoginError).status;
+
 export const login = (
   email: string,
   password: string
-): Promise<LoginResponse> =>
+): Promise<LoginResponse | LoginError> =>
   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth`, {
     headers: {
       Accept: 'application/json',
@@ -26,8 +34,4 @@ export const login = (
       email_address: email,
       password,
     }),
-  }).then((res) => {
-    if (res.status === 200) return res.json();
-
-    throw new Error('Failure');
-  });
+  }).then(async (res) => res.json());

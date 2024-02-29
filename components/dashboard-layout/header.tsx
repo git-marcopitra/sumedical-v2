@@ -9,6 +9,10 @@ import { space } from '@/styles/theme/space';
 
 import { SearchSVG, UserSVG } from '../svg';
 
+const ROLES = {
+  super: 'Adminstrador',
+};
+
 const Header: FC = () => {
   const { user } = useAuth();
 
@@ -51,15 +55,15 @@ const Header: FC = () => {
         display="flex"
         border="1px solid"
         alignItems="center"
-        borderRadius={radii.m}
+        borderRadius={radii.s}
       >
         <Div>
           <UserSVG maxWidth="3rem" maxHeight="3rem" width="100%" />
         </Div>
         <Div>
-          <P>{user!.fullName}</P>
+          <P>{user?.fullName}</P>
           <P fontSize={fontSizes.s} fontWeight="300">
-            {user!.role}
+            {user?.role ? ROLES[user?.role] ?? user?.role : ''}
           </P>
         </Div>
       </Div>
