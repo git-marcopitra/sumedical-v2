@@ -1,6 +1,7 @@
-import { Div } from '@stylin.js/elements';
 import { FC } from 'react';
 
-const Dashboard: FC = () => <Div>Dashboard</Div>;
+import { DashboardLayout } from '@/components';
+
+const Dashboard: FC = () => <DashboardLayout>Dashboard</DashboardLayout>;
 
 export default Dashboard;
