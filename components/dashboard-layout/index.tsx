@@ -5,11 +5,11 @@ import Header from './header';
 import Sidebar from './sidebar';
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => (
-  <Div display="flex" height="100vh">
+  <Div display="flex" height="100vh" maxHeight="100vh" overflow="hidden">
     <Sidebar />
-    <Aside flex="1">
+    <Aside flex="1" display="flex" flexDirection="column">
       <Header />
-      <Main>{children}</Main>
+      <Main overflowY="auto">{children}</Main>
     </Aside>
   </Div>
 );

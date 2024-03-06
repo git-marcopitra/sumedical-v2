@@ -14,10 +14,10 @@ import { STORAGE_KEYS, StorageKey } from '@/constants';
 
 export interface User {
   id: number;
-  role: 'super';
   email: string;
   token: string;
   fullName: string;
+  role: 'super' | 'client';
 }
 
 export interface Auth {
