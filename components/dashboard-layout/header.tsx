@@ -11,6 +11,7 @@ import { SearchSVG, UserSVG } from '../svg';
 
 const ROLES = {
   super: 'Adminstrador',
+  client: 'Cliente',
 };
 
 const Header: FC = () => {
