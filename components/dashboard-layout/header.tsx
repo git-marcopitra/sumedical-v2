@@ -10,7 +10,7 @@ import { space } from '@/styles/theme/space';
 import { SearchSVG, UserSVG } from '../svg';
 
 const ROLES = {
-  super: 'Adminstrador',
+  super: 'Administrador',
   client: 'Cliente',
 };
 
