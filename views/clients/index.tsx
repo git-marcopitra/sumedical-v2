@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import unikey from 'unikey';
 
 import { DashboardLayout } from '@/components';
+import { FilterSVG } from '@/components/svg';
 import { useAuth } from '@/context/auth';
 
 import {
@@ -36,8 +37,32 @@ const Clients: FC = () => {
             Clientes
           </H2>
           <Div display="flex" gap="1rem">
-            <Button>Filter</Button>
-            <Button>Add</Button>
+            <Button
+              all="unset"
+              px="1.2rem"
+              bg="#D9D9D9"
+              height="3rem"
+              display="flex"
+              alignItems="center"
+              borderRadius="0.4rem"
+              justifyContent="center"
+            >
+              <FilterSVG maxWidth="1.5rem" maxHeight="1.5rem" width="100%" />
+            </Button>
+            <Button
+              all="unset"
+              px="1.5rem"
+              height="3rem"
+              display="flex"
+              color="#FFFFFF"
+              alignItems="center"
+              borderRadius="0.4rem"
+              justifyContent="center"
+              textTransform="uppercase"
+              bg="linear-gradient(180deg, #FF7600 0%, #FF5C00 100%)"
+            >
+              Add
+            </Button>
           </Div>
         </Div>
         <Div display="grid" gridTemplateColumns="repeat(5, 1fr)" my="2rem">
