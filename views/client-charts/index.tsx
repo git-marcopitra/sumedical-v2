@@ -41,7 +41,7 @@ const ClientCharts: FC = () => {
       >
         <ArrowDownSVG maxWidth="1.5rem" maxHeight="1.5rem" width="100%" />
         <Select all="unset">
-          <Option>Unimigem - Estrela (RS)</Option>
+          <Option>Unimagem - Estrela (RS)</Option>
           <Option>Cliente x - x (RS)</Option>
         </Select>
       </Label>
