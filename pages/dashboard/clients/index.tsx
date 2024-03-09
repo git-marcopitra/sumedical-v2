@@ -6,7 +6,7 @@ import Clients from '@/views/clients';
 const ClientsPage: NextPage = () => (
   <>
     <Head>
-      <title>Clients | Sumedical</title>
+      <title>Clientes | SUMedical</title>
     </Head>
     <Clients />
   </>

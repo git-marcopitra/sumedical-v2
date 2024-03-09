@@ -6,7 +6,7 @@ import Dashboard from '@/views/dashboard';
 const DashboardPage: NextPage = () => (
   <>
     <Head>
-      <title>Dashboard | Sumedical</title>
+      <title>Painel | SUMedical</title>
     </Head>
     <Dashboard />
   </>

@@ -1,15 +1,18 @@
 import { Button, Div, H2 } from '@stylin.js/elements';
+import Link from 'next/link';
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { DashboardLayout } from '@/components';
 import { FilterSVG } from '@/components/svg';
+import { Routes, RoutesEnum } from '@/constants/routes';
 
 import { ClientFilterForm } from './clients.types';
 import ClientsFilter from './clients-filter';
 import ClientsList from './clients-list';
 
 const Clients: FC = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const clientFilterForm = useForm<ClientFilterForm>({
     defaultValues: {
       type: '',
@@ -17,12 +20,11 @@ const Clients: FC = () => {
       location: '',
     },
   });
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   return (
     <DashboardLayout>
       <FormProvider {...clientFilterForm}>
-        <Div py="5rem" px="2rem" position="relative" height="100%">
+        <Div py="5rem" px="2rem" position="relative">
           {isFilterOpen && (
             <Div
               top="0"
@@ -66,20 +68,22 @@ const Clients: FC = () => {
                 </Button>
                 {isFilterOpen && <ClientsFilter />}
               </Div>
-              <Button
-                all="unset"
-                px="1.5rem"
-                height="3rem"
-                display="flex"
-                color="#FFFFFF"
-                alignItems="center"
-                borderRadius="0.4rem"
-                justifyContent="center"
-                textTransform="uppercase"
-                bg="linear-gradient(180deg, #FF7600 0%, #FF5C00 100%)"
-              >
-                Add
-              </Button>
+              <Link href={Routes[RoutesEnum.AddClient]}>
+                <Button
+                  all="unset"
+                  px="1.5rem"
+                  height="3rem"
+                  display="flex"
+                  color="#FFFFFF"
+                  alignItems="center"
+                  borderRadius="0.4rem"
+                  justifyContent="center"
+                  textTransform="uppercase"
+                  bg="linear-gradient(180deg, #FF7600 0%, #FF5C00 100%)"
+                >
+                  Add
+                </Button>
+              </Link>
             </Div>
           </Div>
           <ClientsList />

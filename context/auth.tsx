@@ -11,6 +11,7 @@ import {
 import { AuthLayout, MotionDiv } from '@/components';
 import { CircleSVG } from '@/components/svg';
 import { STORAGE_KEYS, StorageKey } from '@/constants';
+import { Routes, RoutesEnum } from '@/constants/routes';
 
 export interface User {
   id: number;
@@ -26,7 +27,7 @@ export interface Auth {
   updateUser: (data: User | null, rememberMe?: boolean) => void;
 }
 
-const AUTH_ROUTES = ['/recover', '/login'];
+const AUTH_ROUTES = [RoutesEnum.Recover, RoutesEnum.Login];
 
 const authContext = createContext<Auth>({} as Auth);
 
@@ -44,10 +45,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     if (jsonData) {
       setUser(JSON.parse(jsonData));
 
-      if (AUTH_ROUTES.some((route) => pathname.includes(route)))
-        replace('/dashboard');
+      if (AUTH_ROUTES.some((route) => pathname.includes(Routes[route])))
+        replace(Routes[RoutesEnum.Dashboard]);
     } else if (AUTH_ROUTES.every((route) => !pathname.includes(route)))
-      replace('/login');
+      replace(Routes[RoutesEnum.Login]);
 
     setLoading(false);
   }, []);
@@ -68,7 +69,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     setUser(data);
 
-    replace('/dashboard');
+    replace(Routes[RoutesEnum.Dashboard]);
   };
 
   if (loading)

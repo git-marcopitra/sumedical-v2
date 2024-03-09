@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { hasLoginError, login } from '@/api/auth/login';
 import { AuthLayout } from '@/components';
 import { EyeSlashedSVG, EyeSVG } from '@/components/svg';
+import { Routes, RoutesEnum } from '@/constants/routes';
 import { useAuth } from '@/context/auth';
 import { colors } from '@/styles/theme/colors';
 import { fontSizes } from '@/styles/theme/font-sizes';
@@ -142,7 +143,7 @@ const Login: FC = () => {
         </Button>
         <Span textAlign="center">
           Esqueceu a senha?{' '}
-          <Link href="/recover">
+          <Link href={Routes[RoutesEnum.Recover]}>
             <U>Clique aqui</U>
           </Link>
         </Span>

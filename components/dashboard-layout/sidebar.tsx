@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
+import { Routes, RoutesEnum } from '@/constants/routes';
 import { useAuth } from '@/context/auth';
 import { colors } from '@/styles/theme/colors';
 import { radii } from '@/styles/theme/radii';
@@ -51,24 +52,7 @@ const Sidebar: FC = () => {
           mt={space['4xl']}
           flexDirection="column"
         >
-          <Link href="/dashboard">
-            <Li
-              all="unset"
-              py={space.m}
-              px={space.l}
-              display="block"
-              border="1px solid"
-              borderRadius={radii.m}
-              borderColor={colors.onPrimary}
-              bg={pathname === '/dashboard' ? colors.onPrimary : 'transparent'}
-              color={
-                colors[pathname === '/dashboard' ? 'onSurface' : 'onPrimary']
-              }
-            >
-              Dashboard
-            </Li>
-          </Link>
-          <Link href="/dashboard/clients">
+          <Link href={Routes[RoutesEnum.Dashboard]}>
             <Li
               all="unset"
               py={space.m}
@@ -78,11 +62,40 @@ const Sidebar: FC = () => {
               borderRadius={radii.m}
               borderColor={colors.onPrimary}
               bg={
-                pathname.includes('/clients') ? colors.onPrimary : 'transparent'
+                pathname === Routes[RoutesEnum.Dashboard]
+                  ? colors.onPrimary
+                  : 'transparent'
               }
               color={
                 colors[
-                  pathname.includes('/clients') ? 'onSurface' : 'onPrimary'
+                  pathname === Routes[RoutesEnum.Dashboard]
+                    ? 'onSurface'
+                    : 'onPrimary'
+                ]
+              }
+            >
+              Dashboard
+            </Li>
+          </Link>
+          <Link href={Routes[RoutesEnum.Clients]}>
+            <Li
+              all="unset"
+              py={space.m}
+              px={space.l}
+              display="block"
+              border="1px solid"
+              borderRadius={radii.m}
+              borderColor={colors.onPrimary}
+              bg={
+                pathname.includes(Routes[RoutesEnum.Clients])
+                  ? colors.onPrimary
+                  : 'transparent'
+              }
+              color={
+                colors[
+                  pathname.includes(Routes[RoutesEnum.Clients])
+                    ? 'onSurface'
+                    : 'onPrimary'
                 ]
               }
             >

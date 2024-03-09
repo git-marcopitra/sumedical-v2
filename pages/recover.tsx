@@ -6,7 +6,7 @@ import Recover from '@/views/recover';
 const RecoverPage: NextPage = () => (
   <>
     <Head>
-      <title>Recuperar Conta | Sumedical</title>
+      <title>Recuperar Conta | SUMedical</title>
     </Head>
     <Recover />
   </>

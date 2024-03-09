@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { AuthLayout } from '@/components';
+import { Routes, RoutesEnum } from '@/constants/routes';
 import { colors } from '@/styles/theme/colors';
 import { fontSizes } from '@/styles/theme/font-sizes';
 import { radii } from '@/styles/theme/radii';
@@ -57,7 +58,7 @@ const Recover: FC = () => {
         </Button>
         <Span textAlign="center">
           Já tem uma conta?{' '}
-          <Link href="/login">
+          <Link href={Routes[RoutesEnum.Login]}>
             <U>Clique aqui</U>
           </Link>
         </Span>

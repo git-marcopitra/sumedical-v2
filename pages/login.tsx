@@ -6,7 +6,7 @@ import Login from '@/views/login';
 const LoginPage: NextPage = () => (
   <>
     <Head>
-      <title>Login | Sumedical</title>
+      <title>Entrar | SUMedical</title>
     </Head>
     <Login />
   </>
