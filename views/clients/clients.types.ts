@@ -30,3 +30,9 @@ export interface Client {
   phone_number: string;
   devices: ReadonlyArray<Device>;
 }
+
+export interface ClientFilterForm {
+  type: string;
+  location: string;
+  status: ReadonlyArray<'OK' | 'ALERTA' | 'ATENCAO' | 'NULL'>;
+}

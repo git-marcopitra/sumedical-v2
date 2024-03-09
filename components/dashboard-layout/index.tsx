@@ -9,7 +9,9 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => (
     <Sidebar />
     <Aside flex="1" display="flex" flexDirection="column">
       <Header />
-      <Main overflowY="auto">{children}</Main>
+      <Main overflowY="auto" flex="1">
+        {children}
+      </Main>
     </Aside>
   </Div>
 );

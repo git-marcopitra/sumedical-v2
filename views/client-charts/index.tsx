@@ -11,7 +11,7 @@ const ClientCharts: FC = () => {
   const { query } = useRouter();
   const [data, setData] = useState<ReadonlyArray<Attributes>>();
 
-  const id = (query.id as string) ?? user!.id;
+  const id = (query.id as string) ?? user?.id;
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/clients/${id}`, {
